@@ -1,0 +1,11 @@
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+# IntelliJ related
+*.iml
+.idea/*
+!/.idea/runConfigurations
+
+build
+.gradle
