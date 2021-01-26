@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.4.10"
+    kotlin("multiplatform") version "1.4.20"
 }
 
 group = "de.marcreichelt"
@@ -37,13 +37,18 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
+
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1-native-mt")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1")
             }
         }
         val jvmMain by getting
